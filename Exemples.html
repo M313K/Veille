@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloudification: Services, Stratégies et Défis</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+    <header class="bg-blue-600 text-white p-6 text-center shadow-md">
+        <h1 class="text-3xl font-bold">Cloudification: Services, Stratégies et Défis</h1>
+    </header>
+
+    <nav class="bg-blue-700 text-white p-4 shadow-md">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="text-lg font-semibold">Cloudification</div>
+            <ul class="flex space-x-4">
+                <li><a href="./index.html" class="hover:text-gray-300">Définitions</a></li>
+                <li><a href="./Importance.html" class="hover:text-gray-300">Importance Cloudification</a></li>
+                <li><a href="./Strategie.html" class="hover:text-gray-300">Stratégies</a></li>
+                <li><a href="./Services.html" class="hover:text-gray-300">Services</a></li>
+                <li><a href="./Exemples.html" class="hover:text-gray-300">Exemples</a></li>
+
+                <li><a href="./Innovations.html" class="hover:text-gray-300">Innovations</a></li>
+                <li><a href="./Defis.html" class="hover:text-gray-300">Défis</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto p-6">
+        <section  class=" mx-auto p-6 bg-white shadow-lg rounded-lg">
+            <h2 class="text-2xl font-semibold mb-4">Exemple d'Application Web sur Azure App Service</h2>
+            <p class="text-lg mb-6">Voici une vue d'ensemble du processus et des composants qui interviennent dans un scénario d'authentification et de traitement de requêtes dans Azure App Service :</p>
+
+            <div class="text-center my-6">
+                <img src="assets/basic-app-service-architecture-flow.svg" alt="Datacenter Amadeus" class="mx-auto rounded-lg shadow-lg">
+            </div>
+        
+            <!-- Workflow -->
+            <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold text-gray-700">Workflow</h3>
+                <p>Un utilisateur émet une requête HTTPS vers le domaine par défaut de l'App Service sur <strong>azurewebsites.net</strong>. Ce domaine pointe automatiquement vers l'IP publique intégrée de votre App Service.</p>
+                <ul class="list-disc pl-6">
+                    <li>La connexion <strong>TLS</strong> est établie depuis le client directement vers l'App Service. La certification est entièrement gérée par Azure.</li>
+                    <li><strong>Easy Auth</strong>, une fonctionnalité d'Azure App Service, garantit que l'utilisateur qui accède au site est authentifié avec Microsoft Entra ID.</li>
+                    <li>Le code de votre application déployé sur App Service traite la requête, par exemple en se connectant à une instance d'<strong>Azure SQL Database</strong>, à l'aide d'une chaîne de connexion configurée comme paramètre d'application.</li>
+                    <li>Les informations relatives à la requête originale adressée à App Service et à l'appel à Azure SQL Database sont journalisées dans <strong>Application Insights</strong>.</li>
+                </ul>
+            </div>
+        
+            <!-- Composants -->
+            <div class="bg-gray-50 p-6 rounded-lg shadow-md mt-6">
+                <h3 class="text-xl font-semibold text-gray-700">Composants</h3>
+                <p>Voici un aperçu des composants clés dans cette architecture :</p>
+                <ul class="list-disc pl-6">
+                    <li><strong>Microsoft Entra ID</strong> : Un service de gestion des identités et des accès basé sur le cloud, fournissant un plan de contrôle d’identité pour gérer les autorisations et les rôles des utilisateurs qui accèdent à votre application web.</li>
+                    <li><strong>App Service</strong> : Une plateforme managée permettant de créer, déployer et mettre à l’échelle des applications web avec une gestion simplifiée et un haut niveau d’automatisation.</li>
+                    <li><strong>Azure Monitor</strong> : Un service de supervision qui collecte, analyse et agit sur les données de télémétrie dans votre déploiement, permettant de surveiller la santé et les performances de votre application.</li>
+                    <li><strong>Azure SQL Database</strong> : Un service de base de données relationnelle managée, permettant de stocker et de gérer des données relationnelles avec une haute disponibilité et une sécurité renforcée.</li>
+                </ul>
+            </div>
+
+            <div class="bg-gray-50 p-6 rounded-lg shadow-md mt-6">
+                <h3 class="text-xl font-semibold text-gray-700">Extension vers la Haute Disponibilité et la Résilience</h3>
+                <p>Pour étendre l'architecture initiale vers un environnement à haute disponibilité, nous pouvons déployer l'application dans plusieurs régions. Cela permet de garantir que, même en cas de panne d'une région, le trafic peut être redirigé automatiquement vers une autre région, assurant ainsi la continuité des services.</p>
+        
+                <div class="text-center my-6">
+                    <img src="assets/georep.avif" alt="Extended Architecture with High Availability" class="mx-auto rounded-lg shadow-lg">
+                </div>
+        
+                <p>Dans cette architecture étendue, les composants sont répartis sur plusieurs régions, et Azure Front Door permet de gérer le routage du trafic en fonction de la région disponible, tout en optimisant les performances et en offrant une protection grâce au pare-feu d'application Web (WAF).</p>
+            </div>
+        
+            <!-- Haute Disponibilité -->
+            <div class="bg-gray-50 p-6 rounded-lg shadow-md mt-6">
+                <h3 class="text-xl font-semibold text-gray-700">Haute Disponibilité</h3>
+                <p>Pour assurer une disponibilité continue de votre application, elle est déployée dans deux régions distinctes : une région primaire et une région secondaire. En cas de panne de la région primaire, Azure redirige automatiquement le trafic vers la région secondaire, garantissant ainsi la disponibilité constante de votre application.</p>
+            </div>
+        
+            <!-- Azure Front Door -->
+            <div class="bg-gray-50 p-6 rounded-lg shadow-md mt-6">
+                <h3 class="text-xl font-semibold text-gray-700">Azure Front Door</h3>
+                <p><strong>Azure Front Door</strong> joue un rôle clé dans l'optimisation du routage du trafic entre les régions. Grâce à son mécanisme de mise en cache, il réduit la latence et améliore les performances. En plus de cela, il protège votre application avec un pare-feu d'application Web (WAF), offrant ainsi une sécurité renforcée contre les menaces externes.</p>
+            </div>
+        
+            <!-- Géoréplication -->
+            <div class="bg-gray-50 p-6 rounded-lg shadow-md mt-6">
+                <h3 class="text-xl font-semibold text-gray-700">Géoréplication des Données</h3>
+                <p>La géoréplication est essentielle pour garantir la résilience des données de votre application. Les services tels que <strong>Azure SQL Database</strong> et <strong>Azure Cosmos DB</strong> sont répliqués entre plusieurs régions. Cela permet non seulement d'assurer la continuité des données en cas de défaillance d'une région, mais aussi de garantir une performance optimale en fonction de la localisation des utilisateurs.</p>
+            </div>
+
+            <p class="mt-6 text-center text-blue-300 font-semibold">
+                Réf <a href="https://learn.microsoft.com/fr-fr/azure/architecture/web-apps/app-service/architectures/basic-web-app" target="_blank" class="underline">Architecture de base Azure App service</a>
+                <a href="https://learn.microsoft.com/en-us/azure/architecture/web-apps/guides/enterprise-app-patterns/reliable-web-app/dotnet/guidance" target="_blank" class="underline">Extenstion avec Geo Replication</a>
+            </p>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white text-center p-4 mt-8">
+        <p> Projet Veille Technologique 2025 - KNANI Melek</p>
+    </footer>
+
+</body>
