@@ -28,7 +28,10 @@
         </div>
     </nav>
 
-    <main class="max-w-6xl mx-auto p-6">
+    <main class="max-w-6xl mx-auto p-6 md:p-8 bg-gray-50">
+    
+        <h2 class="text-3xl md:text-4xl font-bold text-blue-800 mb-8 border-b-2 border-blue-200 pb-2">Études de cas et exemples concrets d'architectures et de services cloud</h2>
+    
         <section  class=" mx-auto p-6 bg-white shadow-lg rounded-lg">
             <h2 class="text-2xl font-semibold mb-4">Exemple d'Application Web sur Azure App Service</h2>
             <p class="text-lg mb-6">Voici une vue d'ensemble du processus et des composants qui interviennent dans un scénario d'authentification et de traitement de requêtes dans Azure App Service :</p>
@@ -62,7 +65,7 @@
             </div>
 
             <div class="bg-gray-50 p-6 rounded-lg shadow-md mt-6">
-                <h3 class="text-xl font-semibold text-gray-700">Extension vers la Haute Disponibilité et la Résilience</h3>
+                <h2 class="text-2xl font-semibold mb-4">Extension vers la Haute Disponibilité et la Résilience</h2>
                 <p>Pour étendre l'architecture initiale vers un environnement à haute disponibilité, nous pouvons déployer l'application dans plusieurs régions. Cela permet de garantir que, même en cas de panne d'une région, le trafic peut être redirigé automatiquement vers une autre région, assurant ainsi la continuité des services.</p>
         
                 <div class="text-center my-6">
@@ -90,11 +93,14 @@
                 <p>La géoréplication est essentielle pour garantir la résilience des données de votre application. Les services tels que <strong>Azure SQL Database</strong> et <strong>Azure Cosmos DB</strong> sont répliqués entre plusieurs régions. Cela permet non seulement d'assurer la continuité des données en cas de défaillance d'une région, mais aussi de garantir une performance optimale en fonction de la localisation des utilisateurs.</p>
             </div>
 
-            <p class="mt-6 text-center text-blue-300 font-semibold">
+            
+        </section>
+        <div class="bg-blue-50 p-4 rounded-xl shadow-md my-6">
+            <p class="text-center text-blue-700 font-medium">
                 Réf <a href="https://learn.microsoft.com/fr-fr/azure/architecture/web-apps/app-service/architectures/basic-web-app" target="_blank" class="underline">Architecture de base Azure App service</a>
                 <a href="https://learn.microsoft.com/en-us/azure/architecture/web-apps/guides/enterprise-app-patterns/reliable-web-app/dotnet/guidance" target="_blank" class="underline">Extenstion avec Geo Replication</a>
-            </p>
-        </section>
+                        </p>
+        </div>
     </main>
 
     <footer class="bg-gray-800 text-white text-center p-4 mt-8">
